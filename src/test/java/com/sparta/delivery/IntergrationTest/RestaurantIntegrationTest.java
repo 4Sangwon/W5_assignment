@@ -1,4 +1,4 @@
-package com.sparta.delivery;
+package com.sparta.delivery.IntergrationTest;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -57,6 +57,7 @@ class RestaurantIntegrationTest {
                     "/restaurant/register",
                     request,
                     RestaurantDto.class);
+            System.out.println(response);
 
             // then
             assertEquals(HttpStatus.OK, response.getStatusCode());
@@ -162,7 +163,6 @@ class RestaurantIntegrationTest {
                         .filter(restaurant -> responseRestaurant.getId().equals(restaurant.getId()))
                         .findAny()
                         .orElse(null);
-
                 assertNotNull(registerRestaurant);
                 assertEquals(registerRestaurant.getName(), responseRestaurant.getName());
                 assertEquals(registerRestaurant.getDeliveryFee(), responseRestaurant.getDeliveryFee());

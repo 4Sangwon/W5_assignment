@@ -9,7 +9,7 @@ import javax.validation.constraints.NotNull;
 public class RestaurantRequestDto {
 
     @NotNull
-    private String restaurantName;
+    private String name;
 
     @NotNull
     @Range(min = 1000, max = 100000, message = "허용 최소 주문 금액은 1,000원 ~ 100,000원 입니다.")

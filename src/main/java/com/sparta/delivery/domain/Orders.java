@@ -16,7 +16,7 @@ public class Orders {
     @Column(name = "order_id")
     private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(nullable = false)
     private Restaurant restaurant;
 

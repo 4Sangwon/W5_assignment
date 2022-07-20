@@ -1,4 +1,4 @@
-package com.sparta.delivery;
+package com.sparta.delivery.IntergrationTest;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -413,7 +413,6 @@ class FoodIntegrationTest {
                             .price(770)
                             .build()
             );
-
 
             String requestBody = mapper.writeValueAsString(foodsRequest);
             HttpEntity<String> request = new HttpEntity<>(requestBody, headers);

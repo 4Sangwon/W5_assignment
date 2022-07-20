@@ -40,12 +40,12 @@ public class OrderService {
                     .orElseThrow(() -> new IllegalArgumentException("해당 음식은 존재하지 않습니다."));
             if(om.getQuantity() > 100 || om.getQuantity() < 1)
                 throw new IllegalArgumentException("허용 수량은 1개 ~ 100개 입니다.");
-            OrderMenu orderMenu = new OrderMenu(food.getFoodName(), om.getQuantity(), food.getFoodPrice());
+            OrderMenu orderMenu = new OrderMenu(food.getName(), om.getQuantity(), food.getPrice() * om.getQuantity());
             orderMenuRepository.save(orderMenu);
             OrderFoodResponseDto orderFoodResponseDto = new OrderFoodResponseDto(orderMenu);
             orderFoodResponseDtoList.add(orderFoodResponseDto);
 
-            sum += orderMenu.getQuantity() * orderMenu.getPrice();
+            sum += orderMenu.getPrice();
             menuList.add(orderMenu);
         }
 

@@ -1,11 +1,13 @@
 package com.sparta.delivery.domain;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
 @NoArgsConstructor
+@AllArgsConstructor
 @Getter
 @Entity
 public class Food {
@@ -19,15 +21,15 @@ public class Food {
     private Long restaurantId;
 
     @Column(nullable = false)
-    private String foodName;
+    private String name;
 
     @Column(nullable = false)
-    private int foodPrice;
+    private int price;
 
-    public Food(Long restaurantId, String foodName, int foodPrice) {
+    public Food(Long restaurantId, String name, int price) {
         this.restaurantId = restaurantId;
-        this.foodName = foodName;
-        this.foodPrice = foodPrice;
+        this.name = name;
+        this.price = price;
     }
 
 

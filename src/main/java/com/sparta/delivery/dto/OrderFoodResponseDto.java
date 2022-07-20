@@ -5,13 +5,13 @@ import lombok.Getter;
 
 @Getter
 public class OrderFoodResponseDto {
-    private String foodName;
+    private String name;
     private int quantity;
-    private int foodPrice;
+    private int price;
 
     public OrderFoodResponseDto(OrderMenu orderMenu) {
-        this.foodName = orderMenu.getMenuName();
+        this.name = orderMenu.getMenuName();
         this.quantity = orderMenu.getQuantity();
-        this.foodPrice = orderMenu.getPrice();
+        this.price = orderMenu.getPrice();
     }
 }

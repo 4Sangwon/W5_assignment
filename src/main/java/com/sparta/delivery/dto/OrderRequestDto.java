@@ -9,7 +9,6 @@ import java.util.List;
 
 @Getter
 public class OrderRequestDto {
-
     @NotNull
     private Long restaurantId;
 

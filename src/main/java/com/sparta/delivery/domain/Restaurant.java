@@ -13,11 +13,10 @@ public class Restaurant {
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name = "restaurant_id")
     private Long id;
 
     @Column(nullable = false)
-    private String restaurantName;
+    private String name;
 
     @Column(nullable = false)
     private int minOrderPrice;
@@ -26,8 +25,14 @@ public class Restaurant {
     private int deliveryFee;
 
     public Restaurant(RestaurantRequestDto requestDto) {
-        this.restaurantName = requestDto.getRestaurantName();
+        this.name = requestDto.getName();
         this.minOrderPrice = requestDto.getMinOrderPrice();
         this.deliveryFee = requestDto.getDeliveryFee();
+    }
+
+    public Restaurant(String name,int minOrderPrice,int deliveryFee) {
+        this.name = name;
+        this.minOrderPrice = minOrderPrice;
+        this.deliveryFee = deliveryFee;
     }
 }

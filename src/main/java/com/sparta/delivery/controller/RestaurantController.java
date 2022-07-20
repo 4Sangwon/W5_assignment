@@ -22,9 +22,21 @@ public class RestaurantController {
         return restaurantService.getRestaurants();
     }
 
-    @PostMapping("restaurant/register")
+    @PostMapping("/restaurant/register")
     public Restaurant registRestaurant(@RequestBody @Valid RestaurantRequestDto requestDto) {
-        return restaurantService.saveRestaurant(requestDto);
+        Restaurant restaurant = restaurantService.saveRestaurant(requestDto);
+        return restaurant;
     }
+
+//    @GetMapping("/restaurants")
+//    public ResponseEntity getRestaurant(){
+//        List<Restaurant> results = restaurantService.getRestaurants();
+//        return new ResponseEntity(results, HttpStatus.OK);
+//    }
+//
+//    @PostMapping("/restaurant/register")
+//    public void register(@RequestBody @Valid RestaurantRequestDto requestDto){
+//        Restaurant restaurant = restaurantService.saveRestaurant(requestDto);
+//    }
 
 }

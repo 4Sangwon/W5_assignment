@@ -14,14 +14,16 @@ public class RestaurantService {
     private final RestaurantRepository restaurantRepository;
 
     public Restaurant saveRestaurant(RestaurantRequestDto requestDto) {
+        Restaurant restaurant = new Restaurant(requestDto);
         if(!chkMinOrderPrice(requestDto.getMinOrderPrice())){
             throw new IllegalArgumentException("최소 주문 금액은 100원 단위로만 입력 가능합니다.");
         }
         if(!chkDeliveryFee(requestDto.getDeliveryFee())){
             throw new IllegalArgumentException("배달비는 500원 단위로만 입력 가능합니다.");
         }
-        Restaurant restaurant = new Restaurant(requestDto);
-        return restaurantRepository.save(restaurant);
+        restaurantRepository.save(restaurant);
+
+        return restaurant;
     }
 
     public List<Restaurant> getRestaurants() {

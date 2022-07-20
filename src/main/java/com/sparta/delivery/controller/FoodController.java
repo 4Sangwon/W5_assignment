@@ -5,7 +5,6 @@ import com.sparta.delivery.dto.FoodRequestDto;
 import com.sparta.delivery.service.FoodService;
 import com.sparta.delivery.validator.CustomValidator;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.ResponseEntity;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,11 +23,11 @@ public class FoodController {
     }
 
     @PostMapping("/restaurant/{restaurantId}/food/register")
-    public ResponseEntity<String> registerFood(@PathVariable Long restaurantId, @RequestBody @Valid List<FoodRequestDto> requestDto, Errors errors) {
+    public void registerFood(@PathVariable Long restaurantId, @RequestBody @Valid List<FoodRequestDto> requestDto, Errors errors) {
         customValidator.validate(requestDto, errors);
         if(errors.hasErrors()) {
-            return ResponseEntity.badRequest().body(errors.getAllErrors().get(0).getDefaultMessage());
+            throw new IllegalArgumentException("dd");
         }
-        else return foodService.saveFood(restaurantId, requestDto);
+        foodService.saveFood(restaurantId, requestDto);
     }
 }

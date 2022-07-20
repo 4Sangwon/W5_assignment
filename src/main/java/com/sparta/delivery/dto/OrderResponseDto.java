@@ -10,13 +10,13 @@ import java.util.List;
 @NoArgsConstructor
 public class OrderResponseDto {
     private String restaurantName;
-    private List<OrderFoodResponseDto> orderFoods;
+    private List<OrderFoodResponseDto> foods;
     private int deliveryFee;
     private int totalPrice;
 
     public OrderResponseDto(Orders orders, List<OrderFoodResponseDto> orderFoods) {
-        this.restaurantName  = orders.getRestaurant().getRestaurantName();
-        this.orderFoods = orderFoods;
+        this.restaurantName  = orders.getRestaurant().getName();
+        this.foods = orderFoods;
         this.deliveryFee = orders.getRestaurant().getDeliveryFee();
         this.totalPrice = orders.getTotalPrice();
     }
